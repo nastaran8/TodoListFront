@@ -22,12 +22,12 @@ const SingleTodo: React.FC<{
 
   const handleDone = (id: number,value:boolean) => {
    let data = {
-    isDone: value
+    status: value
    }
     axios.patch(`http://localhost:5000/tasks/${id}`,data).then(({data}) => {
       setTodos(
         todos.map((todo) =>
-          todo.id === id ? { ...todo, isDone: data.isDone } : todo
+          todo.id === id ? { ...todo, status: data.status } : todo
         )
       );
     });
@@ -37,7 +37,7 @@ const SingleTodo: React.FC<{
 
   return (
     <>
-      {todo.isDone ? (
+      {todo.status ? (
             <s className="todos__single--text">{todo.todo}</s>
           ) : (
             <span className="todos__single--text">{todo.todo}</span>
@@ -46,7 +46,7 @@ const SingleTodo: React.FC<{
              <span className="icon" onClick={() => handleDelete(todo.id)}>
               <AiFillDelete />
             </span>
-            <input type="checkbox" onChange={(e) => handleDone(todo.id,e.target.checked)} defaultChecked={todo.isDone}/>
+            <input type="checkbox" onChange={(e) => handleDone(todo.id,e.target.checked)} defaultChecked={todo.status}/>
           </div>
           </>
   );

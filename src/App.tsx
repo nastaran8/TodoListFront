@@ -48,6 +48,12 @@ const deleteAllTask = () => {
       });
 }
 
+const deleteAll = () => {
+  axios.delete(`http://localhost:5000/tasks/delete`).then(({ data}) => {
+    setTodos(data);
+      });
+}
+
 
 useEffect(() => {
   axios.get(`http://localhost:5000/tasks`).then(({ data }) => {
@@ -63,6 +69,7 @@ useEffect(() => {
         <div className="searchForm">
           <button className="buttonFetch" onClick={fetchName}>Fetch random name task</button>
           <button className="deleteAllTask" onClick={deleteAllTask}>Delete Task names</button>
+          <button className="deleteAllTask" onClick={deleteAll}>Delete All Tasks</button>
         <form className="formSearch" onSubmit={handleSearch}>
           <input
             placeholder="Search TodoList"

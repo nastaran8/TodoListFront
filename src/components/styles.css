@@ -89,6 +89,7 @@
   width: 75%;
   padding: 15px;
   margin: 0 auto 30px;
+  cursor: pointer;
 }
 
 .todos__single {
