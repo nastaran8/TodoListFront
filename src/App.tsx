@@ -26,7 +26,8 @@ const App: React.FC = () => {
   };
  
 
- const handleSearch = () => {
+ const handleSearch = (e: React.FormEvent) => {
+  e.preventDefault();
   const choosen = todos.filter(
    (item) =>
    item.todo.includes(search)
@@ -38,6 +39,12 @@ const App: React.FC = () => {
 const fetchName = () => {
   axios.get(`http://localhost:5000/faker`).then(({ data }) => {
     setTodo(data);
+      });
+}
+
+const deleteAllTask = () => {
+  axios.delete(`http://localhost:5000/tasks`).then(({ data}) => {
+    setTodos(data);
       });
 }
 
@@ -55,7 +62,8 @@ useEffect(() => {
         <span className="heading">Todo List</span>
         <div className="searchForm">
           <button className="buttonFetch" onClick={fetchName}>Fetch random name task</button>
-        <form className="formSearch">
+          <button className="deleteAllTask" onClick={deleteAllTask}>Fetch random name task</button>
+        <form className="formSearch" onSubmit={handleSearch}>
           <input
             placeholder="Search TodoList"
             value={search}
@@ -63,9 +71,7 @@ useEffect(() => {
           />
           <span onClick={handleSearch}><AiOutlineSearch /></span>
         </form>
-
-        
-      </div>
+    </div>
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         <TodoList
           todos={todos}
