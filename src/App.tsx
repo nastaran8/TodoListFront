@@ -62,7 +62,7 @@ useEffect(() => {
         <span className="heading">Todo List</span>
         <div className="searchForm">
           <button className="buttonFetch" onClick={fetchName}>Fetch random name task</button>
-          <button className="deleteAllTask" onClick={deleteAllTask}>Fetch random name task</button>
+          <button className="deleteAllTask" onClick={deleteAllTask}>Delete Task names</button>
         <form className="formSearch" onSubmit={handleSearch}>
           <input
             placeholder="Search TodoList"

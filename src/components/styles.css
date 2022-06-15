@@ -77,8 +77,18 @@
 
 .todos__heading {
   font-size: 30px;
-  /* text-align: center; */
   color: white;
+}
+
+.deleteAllTask {
+  background: #000;
+  color: burlywood;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  padding: 15px;
+  margin: 0 auto 30px;
 }
 
 .todos__single {
