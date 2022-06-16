@@ -17,10 +17,22 @@
 
 .formSearch {
   margin-bottom: 30px;
+  position: relative;
 }
 
 .formSearch span {
   cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: -120px;
+  font-size: 50px;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .buttonFetch {

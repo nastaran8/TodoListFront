@@ -43,6 +43,7 @@ const SingleTodo: React.FC<{
             <span className="todos__single--text">{todo.todo}</span>
           )}
           <div>
+            <span>Column:<strong>{todo.id}</strong></span>
              <span className="icon" onClick={() => handleDelete(todo.id)}>
               <AiFillDelete />
             </span>

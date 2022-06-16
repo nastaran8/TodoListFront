@@ -8,7 +8,11 @@ import axios from "axios";
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
-  const [todos, setTodos] = useState<Array<Todo>>([]);
+  const [todos, setTodos] = useState<Array<Todo>>([{
+    todo: "Create todo list", 
+    status:true, 
+    id:1
+}]);
   const [search, setSearch] = useState("");
   const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>([]);
 
@@ -42,11 +46,6 @@ const fetchName = () => {
       });
 }
 
-const deleteAllTask = () => {
-  axios.delete(`http://localhost:5000/tasks`).then(({ data}) => {
-    setTodos(data);
-      });
-}
 
 const deleteAll = () => {
   axios.delete(`http://localhost:5000/tasks/delete`).then(({ data}) => {
@@ -68,12 +67,12 @@ useEffect(() => {
         <span className="heading">Todo List</span>
         <div className="searchForm">
           <button className="buttonFetch" onClick={fetchName}>Fetch random name task</button>
-          <button className="deleteAllTask" onClick={deleteAllTask}>Delete Task names</button>
           <button className="deleteAllTask" onClick={deleteAll}>Delete All Tasks</button>
         <form className="formSearch" onSubmit={handleSearch}>
           <input
-            placeholder="Search TodoList"
+            placeholder="Search By Name"
             value={search}
+            className="input__box"
             onChange={(e) => setSearch(e.target.value)}
           />
           <span onClick={handleSearch}><AiOutlineSearch /></span>
